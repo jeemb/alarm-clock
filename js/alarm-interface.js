@@ -1,4 +1,5 @@
 var Alarm = require('./../js/alarm.js').alarmModule;
+var apiKey = "d1e17823e6ec66b348d41edb1983017d";
 
 function update() {
   $('#clock').text(moment().format('H:mm:ss'));
@@ -17,5 +18,20 @@ $(document).ready(function() {
     console.log(newAlarm);
     $('#alarm-set').text("Your alarm is set for " + hour + ":" + minute);
     setInterval(newAlarm.checkTime(hour, minute), 1000);
+  });
+
+  $('#weather-location').submit(function(event) {
+    var city = $('#location').val();
+    event.preventDefault();
+    $('#location').val("");
+    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey)
+    .then(function(response) {
+      $('.showWeather').text("The humidity in " + city + " is " + response.main.humidity + "%");
+    })
+
+    .fail(function(error) {
+      $('.showWeather').text(error.responseJSON.message);
+    });
+
   });
 });

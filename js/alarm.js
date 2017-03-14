@@ -3,6 +3,8 @@ function Alarm(hour, minute){
   this.minute = minute;
 }
 
+
+
 Alarm.prototype.checkTime = function(hour, minute) {
   var currentHour = parseInt(moment().format('H'));
   var currentMinute = parseInt(moment().format('mm'));
