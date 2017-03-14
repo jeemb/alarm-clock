@@ -3,7 +3,7 @@ function Alarm(hour, minute){
   this.minute = minute;
 }
 
-Alarm.prototype.checkTime = function() {
+Alarm.prototype.checkTime = function(hour, minute) {
   var currentHour = parseInt(moment().format('H'));
   var currentMinute = parseInt(moment().format('mm'));
 
@@ -14,6 +14,5 @@ Alarm.prototype.checkTime = function() {
     $('#alarm').hide();
   }
 };
-setInterval(checkTime, 1000);
 
 exports.alarmModule = Alarm;
