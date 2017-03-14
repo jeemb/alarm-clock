@@ -17,7 +17,9 @@ $(document).ready(function() {
     newAlarm = new Alarm(hour, minute);
     console.log(newAlarm);
     $('#alarm-set').text("Your alarm is set for " + hour + ":" + minute);
-    setInterval(newAlarm.checkTime(hour, minute), 1000);
+    setInterval(function(){
+      newAlarm.checkTime(hour, minute);
+    }, 1000);
 
   });
 });
