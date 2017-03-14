@@ -18,20 +18,6 @@ $(document).ready(function() {
     console.log(newAlarm);
     $('#alarm-set').text("Your alarm is set for " + hour + ":" + minute);
     setInterval(newAlarm.checkTime(hour, minute), 1000);
-  });
-
-  $('#weather-location').submit(function(event) {
-    var city = $('#location').val();
-    event.preventDefault();
-    $('#location').val("");
-    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey)
-    .then(function(response) {
-      $('.showWeather').text("The humidity in " + city + " is " + response.main.humidity + "%");
-    })
-
-    .fail(function(error) {
-      $('.showWeather').text(error.responseJSON.message);
-    });
 
   });
 });
