@@ -1,7 +1,7 @@
 var Weather = require('./../js/weather.js').weatherModule;
 
-function display(city, print_celsius) {
-  $('.showCelsius').text("The temperature in " + city + " is " + print_celsius + " °C");
+function display(city, celsius) {
+  $('.showCelsius').text("The temperature in " + city + " is " + celsius + " °C");
 }
 
 $(document).ready(function() {
